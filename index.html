@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="gimworld is a builder-focused community for Gimkit Creative creators. Share your work, learn new techniques, troubleshoot, and collaborate with other builders.">
-    <title>gimworld – Community for Gimkit Creative Builders</title>
+    <meta name="description" content="Gimworld is a builder-focused community for Gimkit Creative creators. Share your work, learn new techniques, troubleshoot, and collaborate with other builders.">
+    <meta property="og:title" content="gimworld – Community for Gimkit Creative Builders">
+    <meta property="og:description" content="A builder-focused community for Gimkit Creative creators. Share your work, learn new techniques, troubleshoot, and collaborate.">
+    <meta property="og:url" content="https://leonel12.github.io/gimworld/">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    <title>GimWorld – Community for Gimkit Creative Builders</title>
     <style>
         * {
             margin: 0;
@@ -14,133 +19,230 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #fff;
+            color: 
+;
+            background: linear-gradient(135deg, 
+ 0%, 
+ 100%);
+            background-attachment: fixed;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
         header {
             text-align: center;
-            padding: 60px 0 40px;
+            padding: 80px 0 60px;
+            color: #fff;
         }
         h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 4em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+            letter-spacing: -1px;
+            color: #000;
         }
         .tagline {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 30px;
+            font-size: 1.4em;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 40px;
+            font-weight: 300;
         }
         .cta-button {
             display: inline-block;
-            padding: 15px 40px;
-            background: 
+            padding: 18px 50px;
+            background: #fff;
+            color: 
 ;
-            color: #fff;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 1.1em;
-            transition: background 0.3s;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
             background: 
 ;
         }
+        .content-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
         section {
-            margin: 60px 0;
+            margin: 30px 0;
         }
         h2 {
-            font-size: 2em;
+            font-size: 2.2em;
             margin-bottom: 20px;
+            color: 
+;
+            font-weight: 700;
         }
         p {
             margin-bottom: 15px;
-            font-size: 1.1em;
+            font-size: 1.15em;
+            color: #444;
         }
         .steps {
-            background: 
+            background: linear-gradient(135deg, 
+ 0%, 
+ 100%);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid 
 ;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
         }
         .steps ol {
-            margin-left: 20px;
+            margin-left: 25px;
         }
         .steps li {
-            margin: 10px 0;
-            font-size: 1.1em;
+            margin: 15px 0;
+            font-size: 1.15em;
+            color: #333;
+        }
+        .steps a {
+            color: 
+;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .steps a:hover {
+            text-decoration: underline;
+        }
+        .guidelines {
+            background: 
+;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .guidelines ul {
+            margin-left: 25px;
+        }
+        .guidelines li {
+            margin: 12px 0;
+            font-size: 1.15em;
+            color: #333;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, 
+ 0%, 
+ 100%);
+            color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .highlight-box a {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.3em;
+            text-decoration: none;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 2px;
+        }
+        .highlight-box a:hover {
+            border-bottom: 3px solid #fff;
         }
         footer {
             text-align: center;
             padding: 40px 0;
-            color: #666;
-            border-top: 1px solid #eee;
+            color: rgba(255,255,255,0.9);
             margin-top: 60px;
         }
         footer a {
-            color: 
-;
+            color: #fff;
             text-decoration: none;
+            font-weight: 600;
+            margin: 0 15px;
         }
         footer a:hover {
             text-decoration: underline;
+        }
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .content-card {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>gimworld</h1>
-            <p class="tagline">A community for Gimkit Creative builders to share, learn, and collaborate.</p>
+            <h1>🎮 GimWorld</h1>
+            <p class="tagline">Build, share, collaborate — and keep it real.</p>
             <a href="https://padlet.com/ForeverGimWorld/gimworld-romw9j63mcbzwbjb" class="cta-button" target="_blank">Join the Community</a>
         </header>
 
-        <section>
-            <h2>What is gimworld?</h2>
-            <p>gimworld is a builder-focused community where Gimkit Creative creators share their work, learn techniques, troubleshoot, and collaborate on projects. Whether you're building your first map or you're a seasoned creator, this is your space to connect with other builders.</p>
-            <p><strong>Who runs it?</strong> Leo The Great (Leonel Omovie), CEO of PixeWorld.</p>
-        </section>
+        <div class="content-card">
+            <section>
+                <h2>What is gimworld?</h2>
+                <p>gimworld is where Gimkit Creative builders come together to share their work, learn new techniques, troubleshoot challenges, and collaborate on projects. Whether you're building your first map or you're a seasoned creator, this is your space to connect with other builders.</p>
+            </section>
+        </div>
 
-        <section>
-            <h2>How to Join</h2>
-            <div class="steps">
-                <ol>
-                    <li>Visit the <a href="https://padlet.com/ForeverGimWorld/gimworld-romw9j63mcbzwbjb" target="_blank">gimworld Padlet</a></li>
-                    <li>Check out the Community Rules & FAQ</li>
-                    <li>Start sharing your creations and connecting with other builders</li>
-                </ol>
-            </div>
-            <a href="https://padlet.com/ForeverGimWorld/gimworld-romw9j63mcbzwbjb" class="cta-button" target="_blank">Go to Padlet</a>
-        </section>
+        <div class="content-card">
+            <section>
+                <h2>How to Join</h2>
+                <div class="steps">
+                    <ol>
+                        <li>Visit the <a href="https://padlet.com/ForeverGimWorld/gimworld-romw9j63mcbzwbjb" target="_blank">gimworld Padlet</a></li>
+                        <li>Check out the Community Rules & FAQ</li>
+                        <li>Start sharing your creations and connecting with other builders</li>
+                    </ol>
+                </div>
+                <a href="https://padlet.com/ForeverGimWorld/gimworld-romw9j63mcbzwbjb" class="cta-button" target="_blank">Go to Padlet</a>
+            </section>
+        </div>
 
-        <section>
-            <h2>Community Guidelines</h2>
-            <p><strong>Quick summary:</strong></p>
-            <ul style="margin-left: 20px; font-size: 1.1em;">
-                <li>Be respectful</li>
-                <li>Share your builds and help others</li>
-                <li>No spam or self-promotion outside of your creations</li>
-            </ul>
-            <p style="margin-top: 20px;">Read the full <strong>Community Rules & FAQ</strong> on the Padlet/site.</p>
-        </section>
+        <div class="content-card">
+            <section>
+                <h2>Community Guidelines</h2>
+                <div class="guidelines">
+                    <p><strong>Quick summary:</strong></p>
+                    <ul>
+                        <li><span class="emoji">✅</span>Be respectful and supportive</li>
+                        <li><span class="emoji">🎨</span>Share your builds and help others</li>
+                        <li><span class="emoji">🚫</span>No spam or self-promotion outside of your creations</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 20px;">Read the full <strong>Community Rules & FAQ</strong> on the Padlet.</p>
+            </section>
+        </div>
 
-        <section>
-            <h2>Need Help?</h2>
-            <p>Have questions or need support? Use our admin contact form:</p>
-            <p><a href="https://forms.office.com/r/kFyH7TXtQJ" target="_blank" style="color: 
-; font-weight: 600;">Contact Form</a></p>
-        </section>
+        <div class="highlight-box">
+            <h2 style="color: #fff; margin-bottom: 15px;">Need Help?</h2>
+            <p style="color: rgba(255,255,255,0.95); margin-bottom: 20px;">Have questions or need support?</p>
+            <a href="https://forms.office.com/r/kFyH7TXtQJ" target="_blank">Contact Us</a>
+        </div>
 
         <footer>
-            <p><a href="https://padlet.com/ForeverGimWorld/gimworld-romw9j63mcbzwbjb" target="_blank">Padlet</a> | <a href="https://forms.office.com/r/kFyH7TXtQJ" target="_blank">Contact</a></p>
-            <p>© 2026 gimworld | Run by GimWorld</p>
+            <p>
+                <a href="https://padlet.com/ForeverGimWorld/gimworld-romw9j63mcbzwbjb" target="_blank">Padlet</a> | 
+                <a href="https://forms.office.com/r/kFyH7TXtQJ" target="_blank">Contact</a> | 
+                <a href="https://github.com/leonel12/gimworld" target="_blank">GitHub</a>
+            </p>
+            <p style="margin-top: 15px;">© 2026 gimworld</p>
         </footer>
     </div>
 </body>
