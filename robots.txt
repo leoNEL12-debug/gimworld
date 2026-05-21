@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leonel12.github.io/gimworld/sitemap.xml
