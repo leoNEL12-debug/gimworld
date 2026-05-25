@@ -1,0 +1,24 @@
+name: Quality Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Validate HTML
+      run: |
+        npm install -g html-validate
+        html-validate '**/*.html' || true
+    
+    - name: Check for broken links
+      run: |
+        npm install -g broken-link-checker
+        blc -r https://leonel12-debug.github.io/gimworld/ || true
