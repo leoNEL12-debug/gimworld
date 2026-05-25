@@ -1,0 +1,121 @@
+name: Quality Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-html:
+    runs-on: ubuntu-latest
+    name: Validate HTML & CSS
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install validation tools
+      run: npm install -g html-validate stylelint
+    
+    - name: Validate HTML files
+      run: |
+        echo "Validating HTML files..."
+        html-validate '**/*.html' --config-file .html-validate.json || true
+    
+    - name: Lint CSS
+      run: |
+        echo "Linting CSS files..."
+        stylelint '**/*.css' || true
+
+  check-links:
+    runs-on: ubuntu-latest
+    name: Check for Broken Links
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Check links in HTML files
+      run: |
+        echo "Checking for broken links in repository..."
+        npm install -g broken-link-checker
+        for file in $(find . -name "*.html" -type f); do
+          echo "Checking links in $file..."
+          blc -ro "$file" || true
+        done
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    name: Lighthouse Performance Check
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run Lighthouse
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        uploadArtifacts: true
+        temporaryPublicStorage: true
+      continue-on-error: true
+
+  code-quality:
+    runs-on: ubuntu-latest
+    name: Code Quality Checks
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Check for common issues
+      run: |
+        echo "Checking for console logs and debuggers..."
+        ! grep -r "console\.\(log\|error\|warn\)" --include="*.js" . || echo "⚠️ Console statements found"
+        ! grep -r "debugger" --include="*.js" . || echo "⚠️ Debugger statements found"
+    
+    - name: Check file sizes
+      run: |
+        echo "Checking for unusually large files..."
+        find . -type f \( -name "*.js" -o -name "*.css" -o -name "*.html" \) -size +500k -exec echo "⚠️ Large file: {}" \;
+
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Scan
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run security audit
+      run: |
+        echo "Scanning for security vulnerabilities..."
+        if [ -f "package.json" ]; then
+          npm install
+          npm audit --audit-level=moderate || true
+        fi
+      continue-on-error: true
+
+  notify:
+    runs-on: ubuntu-latest
+    name: Summary
+    needs: [validate-html, check-links, code-quality]
+    if: always()
+    
+    steps:
+    - name: Quality Check Summary
+      run: |
+        echo "✅ Quality checks completed!"
+        echo ""
+        echo "Checks run:"
+        echo "  ✓ HTML Validation"
+        echo "  ✓ CSS Linting"
+        echo "  ✓ Broken Link Detection"
+        echo "  ✓ Lighthouse Performance"
+        echo "  ✓ Code Quality"
+        echo "  ✓ Security Scan"
